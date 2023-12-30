@@ -1,3 +1,5 @@
+# api/views.py
+
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -18,6 +20,7 @@ class NewsView(APIView):
         except requests.RequestException as e:
             logger.error(f"Error fetching news data: {e}")
             news_data = []
+            return Response({"error": "Failed to fetch news data"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
         serializer = NewsSerializer(data=news_data, many=True)
         serializer.is_valid(raise_exception=True)
@@ -33,6 +36,6 @@ class StockView(APIView):
             data = response.json()
         except requests.RequestException as e:
             logger.error(f"Error fetching stock data: {e}")
-            data = {}
+            return Response({"error": "Failed to fetch stock data"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
         return Response(data)
