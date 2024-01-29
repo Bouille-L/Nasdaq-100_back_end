@@ -34,8 +34,9 @@ CORS_ALLOWED_ORIGINS = [
 # settings.py
 
 NEWS_API_URL = "https://api.marketaux.com/v1/news/all?symbols=AAPL%2CAMZN%2CMSFT&filter_entities=true&language=en&api_token=VaKWXXrS914a2GtHtskWhqNelbn5vsDSCGT63Zm3"
-STOCK_API_URL = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=TQQQ&interval=30min&outputsize=full&extended_hours=false&apikey=SWHMUAOL1RMD6V3X"
-
+API_TQQQ_URL = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=TQQQ&interval=30min&outputsize=full&extended_hours=false&apikey=SWHMUAOL1RMD6V3X"
+API_SQQQ_URL = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=SQQQ&interval=30min&outputsize=full&extended_hours=false&apikey=SWHMUAOL1RMD6V3X"
+API_QQQ_URL = "https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=QQQ&interval=30min&outputsize=full&extended_hours=false&apikey=SWHMUAOL1RMD6V3X"
 
 # Application definition
 

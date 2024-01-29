@@ -27,10 +27,37 @@ class NewsView(APIView):
         return Response(serializer.validated_data, status=status.HTTP_200_OK)
 
 
-class StockView(APIView):
+class StockViewTQQQ(APIView):
     def get(self, request):
         try:
-            url = settings.STOCK_API_URL
+            url = settings.API_TQQQ_URL
+            response = requests.get(url)
+            response.raise_for_status()
+            data = response.json()
+        except requests.RequestException as e:
+            logger.error(f"Error fetching stock data: {e}")
+            return Response({"error": "Failed to fetch stock data"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+        return Response(data)
+
+class StockViewSQQQ(APIView):
+    def get(self, request):
+        try:
+            url = settings.API_SQQQ_URL
+            response = requests.get(url)
+            response.raise_for_status()
+            data = response.json()
+        except requests.RequestException as e:
+            logger.error(f"Error fetching stock data: {e}")
+            return Response({"error": "Failed to fetch stock data"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+        return Response(data)
+    
+
+class StockViewQQQ(APIView):
+    def get(self, request):
+        try:
+            url = settings.API_QQQ_URL
             response = requests.get(url)
             response.raise_for_status()
             data = response.json()
