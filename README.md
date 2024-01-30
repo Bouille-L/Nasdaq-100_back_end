@@ -1,4 +1,4 @@
-# Nasdaq-100_front_end
+# Nasdaq-100_back_end
 ## Objective:
 The objective of this project is to develop a web application that provides users with comprehensive information and interactive charts for Nasdaq-100 ETF (TQQQ, QQQ, SQQQ). The application will empower users to make informed investment decisions and track ETF performance.
 
@@ -49,4 +49,54 @@ API Documentation : https://www.thenewsapi.com/documentation
 To review the UML component diagram, please visit the following repository : https://github.com/Bouille-L/Web-App-UML-Diagram.git
 
 # Installation Instructions: 
-This guide will help you set up and run Nasdaq-100 ETF Explorer back end on your local machine for development and testing purposes.to install and set up this fron end locally, you need:
+This guide provides step-by-step instructions for setting up the backend of the Nasdaq 100 ETF Explorer Project, which utilizes Django REST Framework.
+
+## Prerequisites
+Before you begin, ensure you have the following installed on your system:
+
+* Python (3.8 or later)
+* pip (Python package manager)
+* virtualenv (optional, but recommended for creating isolated Python environments)
+
+Setup
+Clone the Repository
+
+First, clone the repository to your local machine using Git:
+
+
+git clone https://github.com/Bouille-L/Nasdaq-100_back_end.git
+cd Nasdaq-100_back_end```
+
+## Create and Activate a Virtual Environment (Optional)
+
+It's recommended to create a virtual environment to keep dependencies required by different projects separate:
+
+On Windows:
+```
+python -m venv venv
+.\venv\Scripts\activate
+```
+
+On macOS and Linux:
+```
+python3 -m venv venv
+source venv/bin/activate
+Install Dependencies
+```
+
+## With the virtual environment activated, install the required packages using pip:
+
+```
+pip install -r requirements.txt
+```
+
+## Run the Development Server
+
+Start the Django development server:
+```
+python manage.py runserver
+Your backend should now be running locally on http://localhost:8000/.
+```
+
+
+
