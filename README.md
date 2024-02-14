@@ -1,4 +1,4 @@
-# Nasdaq-100_back_end
+# Nasdaq-100 ETF Explorer Web App
 ## Objective:
 The objective of this project is to develop a web application that provides users with comprehensive information and interactive charts for Nasdaq-100 ETF (TQQQ, QQQ, SQQQ). The application will empower users to make informed investment decisions and track ETF performance.
 
