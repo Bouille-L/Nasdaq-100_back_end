@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-"""Django's command-line utility for administrative tasks."""
 import os
 import sys
 
@@ -15,6 +14,12 @@ def main():
             "available on your PYTHONPATH environment variable? Did you "
             "forget to activate a virtual environment?"
         ) from exc
+    
+    # Check if process.env.PORT is set
+    if os.environ.get('PORT'):
+        # If PORT is set, default binding to '0.0.0.0'
+        sys.argv.insert(2, '0.0.0.0:8000')
+    
     execute_from_command_line(sys.argv)
 
 

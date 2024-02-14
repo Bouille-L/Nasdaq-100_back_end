@@ -20,15 +20,42 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-bpon6--g&2^^lns4rva^p%arlh=rt&)fdi8xahsq%t^46j_bou'
+import os
+
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-bpon6--g&2^^lns4rva^p%arlh=rt&)fdi8xahsq%t^46j_bou')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'False') == 'False'
 
-ALLOWED_HOSTS = []
+# Security settings
+SECURE_SSL_REDIRECT = True  # Redirect all non-HTTPS requests to HTTPS.
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')  # Trust the `X-Forwarded-Proto` header.
+
+# Strict-Transport-Security header (ensure browsers only access the site over HTTPS for the next year)
+SECURE_HSTS_SECONDS = 31536000  # 1 year in seconds
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+
+# Prevent the browser from guessing the content type and executing scripts from non-executable MIME types
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
+# Other security settings you might consider:
+# CSRF_COOKIE_SECURE = True  # Only send CSRF cookies over HTTPS.
+# SESSION_COOKIE_SECURE = True  # Only send session cookies over HTTPS.
+
+
+# Retrieve port from environment variable or default to 8000
+PORT = int(os.environ.get('PORT', 8000))
+
+
+ALLOWED_HOSTS = ['*']  # Assuming you're allowing all hosts for simplicity
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",  # Add the origin of your React app
+    "http://localhost",
+    "http://localhost:80",
+    "http://127.0.0.1",
+    "http://127.0.0.1:80",
+    "https://nasdaq-100-webapp-frontend-9efe14c7926a.herokuapp.com", 
 ]
 
 # settings.py
@@ -62,6 +89,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'Nasdaq_100_ETF_Explorer.urls'
@@ -131,6 +159,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
