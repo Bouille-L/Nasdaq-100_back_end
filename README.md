@@ -98,5 +98,12 @@ python manage.py runserver
 Your backend should now be running locally on http://localhost:8000/.
 ```
 
+## Live Application
+
+The Nasdaq-100 ETFs Explorer is deployed and can be accessed at the following URL:
+
+[Nasdaq-100 ETFs Explorer](https://nasdaq-100-webapp-backend-9efe14c7926a.herokuapp.com/admin)
+
+Feel free to visit the live application to explore its features without needing to set up a local development environment.
 
 
